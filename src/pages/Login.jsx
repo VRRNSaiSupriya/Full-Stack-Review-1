@@ -11,6 +11,8 @@ const Login = () => {
     password: ""
   });
 
+  const [error, setError] = useState("");
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -18,18 +20,47 @@ const Login = () => {
     });
   };
 
+  // ✅ Validation Function
+  const validateForm = () => {
+
+    // gmail only (lowercase)
+    const emailRegex = /^[a-z0-9._%+-]+@gmail\.com$/;
+
+    // password rules
+    const passwordRegex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/;
+
+    if (!emailRegex.test(formData.username)) {
+      setError("Enter valid Gmail (example@gmail.com)");
+      return false;
+    }
+
+    if (!passwordRegex.test(formData.password)) {
+      setError(
+        "Password must contain 1 uppercase, 1 number, 1 symbol & minimum 8 characters"
+      );
+      return false;
+    }
+
+    setError("");
+    return true;
+  };
+
   const handleLogin = (e) => {
     e.preventDefault();
 
-    // SIMPLE DEMO AUTHENTICATION
-    if (formData.username === "student") {
+    // ✅ check validation first
+    if (!validateForm()) return;
+
+    // DEMO AUTHENTICATION
+    if (formData.username === "student@gmail.com") {
       navigate("/student");
     } 
-    else if (formData.username === "teacher") {
+    else if (formData.username === "teacher@gmail.com") {
       navigate("/teacher");
     } 
     else {
-      alert("Invalid Login");
+      setError("Invalid Login Credentials");
     }
   };
 
@@ -57,6 +88,9 @@ const Login = () => {
           onChange={handleChange}
           required
         />
+
+        {/* ✅ Error Message */}
+        {error && <p className="error">{error}</p>}
 
         <button type="submit">Login</button>
 
