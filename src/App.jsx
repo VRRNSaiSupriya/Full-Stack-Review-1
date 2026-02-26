@@ -11,12 +11,14 @@ import Courses from "./pages/Courses";
 import Marks from "./pages/Marks";
 import Feedback from "./pages/Feedback";
 import Upload from "./pages/Upload";
+import ForgotPassword from "./pages/ForgotPassword";
 
 /* Navbar Component */
 const Navbar = () => {
   return (
     <nav className="navbar">
-      <h2 className="logo">LMS</h2>
+      {/* ✅ Changed name */}
+      <h2 className="logo">PortfolioHub</h2>
 
       <div className="nav-links">
         <Link to="/">Home</Link>
@@ -33,18 +35,16 @@ const Navbar = () => {
 function App() {
   return (
     <Router>
-
-      {/* Navbar visible on all pages */}
       <Navbar />
 
       <Routes>
-
         {/* Home */}
         <Route path="/" element={<Home />} />
 
         {/* Auth */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
 
         {/* Dashboards */}
         <Route path="/student" element={<StudentDashboard />} />
@@ -55,9 +55,7 @@ function App() {
         <Route path="/marks" element={<Marks />} />
         <Route path="/feedback" element={<Feedback />} />
         <Route path="/upload" element={<Upload />} />
-
       </Routes>
-
     </Router>
   );
 }

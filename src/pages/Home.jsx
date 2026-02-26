@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <div className="home-container">
-      <h1>LMS</h1>
-      <p>Learning Management System</p>
+      <h1>PORTFOLIO-HUB</h1>
+      <p>Online Platform For Teachers and Students Portfolio</p>
 
       <img src={lms} alt="LMS" className="home-img" />
 

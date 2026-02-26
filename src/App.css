@@ -30,3 +30,16 @@
 .login-form button:hover {
   background-color: #2980b9;
 }
+/* Logout Button Style */
+.logout-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.logout-btn:hover {
+  text-decoration: underline;
+}

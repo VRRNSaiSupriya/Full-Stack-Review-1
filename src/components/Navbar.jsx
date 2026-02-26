@@ -2,20 +2,17 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 const Navbar = () => {
-
-  const auth = useAuth();
-  const user = auth?.user;
-  const logout = auth?.logout;   // get logout function
+  const { user, logout } = useAuth();   // ✅ get logout
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    logout();        // clear user from context
-    navigate("/login");
+    logout();            // remove user
+    navigate("/login");  // go to login page
   };
 
   return (
     <div className="navbar">
-      <h2>LMS</h2>
+      <h2>PORTFOLIO-HUB</h2>
 
       <div className="nav-links">
         <Link to="/">Home</Link>
@@ -28,30 +25,33 @@ const Navbar = () => {
           </>
         )}
 
-        {/* STUDENT NAVBAR */}
+        {/* STUDENT MENU */}
         {user?.role === "student" && (
           <>
             <Link to="/student">Dashboard</Link>
             <Link to="/courses">Courses</Link>
             <Link to="/marks">Marks</Link>
             <Link to="/feedback">Feedback</Link>
+
+            {/* ✅ LOGOUT BUTTON */}
+            <button className="logout-btn" onClick={handleLogout}>
+              Logout
+            </button>
           </>
         )}
 
-        {/* TEACHER NAVBAR */}
+        {/* TEACHER MENU */}
         {user?.role === "teacher" && (
           <>
             <Link to="/teacher">Dashboard</Link>
             <Link to="/upload">Assign Marks</Link>
             <Link to="/courses">Courses</Link>
-          </>
-        )}
 
-        {/* LOGOUT BUTTON */}
-        {user && (
-          <button className="logout-btn" onClick={handleLogout}>
-            Logout
-          </button>
+            {/* ✅ LOGOUT BUTTON */}
+            <button className="logout-btn" onClick={handleLogout}>
+              Logout
+            </button>
+          </>
         )}
       </div>
     </div>
