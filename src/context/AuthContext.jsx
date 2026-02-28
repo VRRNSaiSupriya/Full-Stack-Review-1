@@ -6,24 +6,25 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
-  // Dummy users database
+  // ✅ Dummy users database
   const users = [
     {
       username: "student1",
       email: "student@gmail.com",
-      password: "1234",
+      password: "Student@123",
       role: "student",
       name: "Sai Student",
     },
     {
       username: "teacher1",
       email: "teacher@gmail.com",
-      password: "1234",
+      password: "Teacher@123",
       role: "teacher",
       name: "Ravi Teacher",
     },
   ];
 
+  // ✅ Login function
   const login = (identifier, password) => {
     const foundUser = users.find(
       (u) =>
@@ -33,12 +34,13 @@ export const AuthProvider = ({ children }) => {
 
     if (foundUser) {
       setUser(foundUser);
-      return foundUser.role;
+      return foundUser.role; // ⭐ IMPORTANT
     }
 
     return null;
   };
 
+  // ✅ Logout
   const logout = () => {
     setUser(null);
   };

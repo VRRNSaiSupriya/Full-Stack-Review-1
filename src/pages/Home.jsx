@@ -1,19 +1,17 @@
-import lms from "../assets/lms.jpeg";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import "../App.css";
 
 const Home = () => {
+  const navigate = useNavigate();
+
   return (
-    <div className="home-container">
-      <h1>PORTFOLIO-HUB</h1>
-      <p>Online Platform For Teachers and Students Portfolio</p>
+    <div className="hero-overlay">
+      <h1>Welcome to PortfolioHub</h1>
+      <p>Track • Manage • Showcase Your Projects</p>
 
-      <img src={lms} alt="LMS" className="home-img" />
-
-      <div style={{ marginTop: "20px" }}>
-        <Link to="/login" className="btn">Login</Link>
-        {" "}
-        <Link to="/register" className="btn">Register</Link>
-      </div>
+      <button className="hero-btn" onClick={() => navigate("/login")}>
+        Get Started
+      </button>
     </div>
   );
 };

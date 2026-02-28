@@ -1,18 +1,83 @@
+/* ================= GLOBAL BACKGROUND ================= */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+
+  /* ⭐ Global background image */
+  background-image: url("./assets/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  min-height: 100vh;
+}
+
+
+/* ================= NAVBAR ================= */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+}
+
+.logo {
+  margin: 0;
+}
+
+.nav-links a {
+  color: white;
+  margin-left: 18px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+.logout-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  margin-left: 12px;
+}
+
+.logout-btn:hover {
+  text-decoration: underline;
+}
+
+
+/* ================= LOGIN / REGISTER ================= */
 .login-container {
+  min-height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 60px;
+  justify-content: center;
 }
 
+/* ⭐ Glass effect card */
 .login-form {
   display: flex;
   flex-direction: column;
-  width: 300px;
+  width: 320px;
   gap: 15px;
+
+  background: rgba(255, 255, 255, 0.85);
+  padding: 25px;
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
 }
 
-.login-form input {
+.login-form input,
+.login-form select {
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
@@ -30,16 +95,60 @@
 .login-form button:hover {
   background-color: #2980b9;
 }
-/* Logout Button Style */
-.logout-btn {
-  background: transparent;
-  border: none;
-  color: white;
-  font-size: 15px;
-  cursor: pointer;
-  margin-left: 10px;
+
+.error {
+  color: red;
+  font-size: 14px;
 }
 
-.logout-btn:hover {
-  text-decoration: underline;
+.success {
+  color: green;
+  font-size: 14px;
+}
+
+
+/* ================= HOME HERO ================= */
+.hero-overlay {
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  /* light overlay so background visible */
+  background: rgba(0, 0, 0, 0.05);
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero-overlay h1 {
+  font-size: 52px;
+  margin-bottom: 12px;
+  font-weight: 700;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+.hero-overlay p {
+  font-size: 22px;
+  opacity: 0.95;
+  text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.6);
+}
+
+.hero-btn {
+  margin-top: 25px;
+  padding: 12px 28px;
+  font-size: 16px;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.hero-btn:hover {
+  background: #2980b9;
+  transform: translateY(-2px);
 }
